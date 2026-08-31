@@ -29,8 +29,9 @@ public class FotosService {
     @Value("${aws.bucket.name}")
     private String bucketName;
 
-    @Value("${admin.key}")
-    private String adminKey;
+    //Foi retirado do applications.properties
+    //@Value("${admin.key}")
+    //private String adminKey;
 
     @Autowired
     FotosMapper mapper;
