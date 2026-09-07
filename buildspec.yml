@@ -1,0 +1,53 @@
+version: 0.2
+
+env:
+  variables:
+    APP_NAME: "projeto-devops-back-end"
+    JAR_NAME: "projeto-devops-back-end.jar"
+    APP_DIR: "/opt/projeto-devops-back-end"
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto21
+
+  pre_build:
+    commands:
+      - echo "========================================="
+      - echo "INFORMAÇÕES DO AMBIENTE"
+      - echo "========================================="
+      - java -version
+      - chmod +x mvnw
+      - ./mvnw -version
+
+  build:
+    commands:
+      - echo "========================================="
+      - echo "EXECUTANDO TESTES E BUILD"
+      - echo "========================================="
+      - ./mvnw clean package
+
+  post_build:
+    commands:
+      - echo "========================================="
+      - echo "PREPARANDO ARTEFATO PARA CODEDEPLOY"
+      - echo "========================================="
+
+      - mkdir -p deploy-artifact
+
+      - cp target/*.jar deploy-artifact/${JAR_NAME}
+
+      - cp deploy/appspec.yml deploy-artifact/
+
+      - cp -r deploy/scripts deploy-artifact/
+
+      - echo "Conteúdo do artefato:"
+      - find deploy-artifact -type f
+
+      - echo "Build finalizado em $(date)"
+
+artifacts:
+  files:
+    - "**/*"
+  base-directory: deploy-artifact
+  discard-paths: no

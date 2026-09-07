@@ -15,8 +15,8 @@ jobs:
 
     env:
       URL_DATABASE: ${{ secrets.URL_DATABASE }}
-      USERNAME: ${{ secrets.USERNAME }}
-      PASSWORD: ${{ secrets.PASSWORD }}
+      USERNAME: ${{ secrets.DB_USERNAME }}
+      PASSWORD: ${{ secrets.DB_PASSWORD }}
       AWS_BUCKET_NAME: ${{ vars.AWS_BUCKET_NAME }}
 
     steps:

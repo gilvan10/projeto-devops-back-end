@@ -1,0 +1,26 @@
+version: 0.0
+
+os: linux
+
+file_exists_behavior: OVERWRITE
+
+files:
+  - source: projeto-devops-back-end.jar
+    destination: /opt/projeto-devops-back-end
+
+hooks:
+
+  ApplicationStop:
+    - location: scripts/application_stop.sh
+      timeout: 60
+      runas: root
+
+  BeforeInstall:
+    - location: scripts/before_install.sh
+      timeout: 60
+      runas: root
+
+  ApplicationStart:
+    - location: scripts/application_start.sh
+      timeout: 60
+      runas: root
