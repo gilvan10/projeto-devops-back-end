@@ -19,6 +19,7 @@ phases:
       - java -version
       - chmod +x mvnw
       - ./mvnw -version
+      - test -n "$AWS_BUCKET_NAME" && echo "AWS_BUCKET_NAME definida" || echo "ERRO: AWS_BUCKET_NAME não definida"
 
   build:
     commands:
