@@ -5,7 +5,7 @@ os: linux
 file_exists_behavior: OVERWRITE
 
 files:
-  - source: projeto-devops-back-end.jar
+  - source: target/projeto-devops-back-end.jar
     destination: /opt/projeto-devops-back-end
 
 hooks:
@@ -22,5 +22,5 @@ hooks:
 
   ApplicationStart:
     - location: scripts/application_start.sh
-      timeout: 60
+      timeout: 120
       runas: root
