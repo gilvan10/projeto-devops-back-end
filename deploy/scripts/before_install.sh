@@ -3,22 +3,16 @@
 set -e
 
 APP_DIR="/opt/projeto-devops-back-end"
-JAR_FILE="$APP_DIR/projeto-devops-back-end.jar"
+
+echo "========================================="
+echo "BEFORE INSTALL"
+echo "========================================="
 
 echo "Preparando diretório da aplicação..."
 
 mkdir -p "$APP_DIR"
 
-echo "Verificando arquivo antigo..."
+echo "Diretório da aplicação:"
+ls -ld "$APP_DIR"
 
-if [ -f "$JAR_FILE" ]; then
-    echo "JAR encontrado:"
-    ls -lh "$JAR_FILE"
-
-    echo "Removendo JAR antigo..."
-    rm -f "$JAR_FILE"
-
-    echo "JAR antigo removido."
-else
-    echo "Nenhum JAR antigo encontrado."
-fi
+echo "BeforeInstall finalizado com sucesso."

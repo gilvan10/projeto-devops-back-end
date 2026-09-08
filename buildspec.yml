@@ -6,7 +6,6 @@ env:
     JAR_NAME: "projeto-devops-back-end.jar"
     APP_DIR: "/opt/projeto-devops-back-end"
 
-
   secrets-manager:
     URL_DATABASE: "projeto-devops-back-end/prod:URL_DATABASE"
     DB_USERNAME: "projeto-devops-back-end/prod:DB_USERNAME"
@@ -14,6 +13,7 @@ env:
     AWS_BUCKET_NAME: "projeto-devops-back-end/prod:AWS_BUCKET_NAME"
 
 phases:
+
   install:
     runtime-versions:
       java: corretto21
@@ -41,21 +41,27 @@ phases:
       - echo "PREPARANDO ARTEFATO PARA CODEDEPLOY"
       - echo "========================================="
 
-      - mkdir -p deploy-artifact
+      - echo "Arquivos gerados pelo Maven:"
+      - ls -lah target/
 
-      - cp target/*.jar deploy-artifact/${JAR_NAME}
+      - mkdir -p deploy-artifact/target
+
+      - cp target/*.jar deploy-artifact/target/${JAR_NAME}
 
       - cp deploy/appspec.yml deploy-artifact/
 
       - cp -r deploy/scripts deploy-artifact/
 
-      - echo "Conteúdo do artefato:"
-      - find deploy-artifact -type f
+      - echo "========================================="
+      - echo "ESTRUTURA FINAL DO ARTEFATO"
+      - echo "========================================="
+
+      - find deploy-artifact -type f -print
 
       - echo "Build finalizado em $(date)"
 
 artifacts:
+  base-directory: deploy-artifact
   files:
     - "**/*"
-  base-directory: deploy-artifact
   discard-paths: no
