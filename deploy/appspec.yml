@@ -2,6 +2,7 @@ version: 0.0
 
 os: linux
 
+#instrui o agente do CodeDeploy a substituir o .jar antigo pelo novo arquivo sem interromper a execução com erro de conflito.
 file_exists_behavior: OVERWRITE
 
 files:

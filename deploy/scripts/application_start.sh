@@ -6,9 +6,18 @@ SERVICE_NAME="projeto-devops-back-end"
 
 echo "Iniciando aplicação..."
 
+# Garante as permissoes
+chmod +x /opt/projeto-devops-back-end/projeto-devops-back-end.jar
+
+# 2. Recarregar e habilitar o serviço no systemd
 systemctl daemon-reload
 systemctl enable "$SERVICE_NAME"
-systemctl start "$SERVICE_NAME"
+
+#inicia a aplicacao
+#systemctl start "$SERVICE_NAME"
+
+#restarta a aplicacao
+systemctl restart projeto-devops-back-end.service
 
 echo "Aguardando aplicação inicializar..."
 
