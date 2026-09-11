@@ -1,40 +1,37 @@
 #!/bin/bash
-
 set -e
 
 SERVICE_NAME="projeto-devops-back-end"
+APP_DIR="/opt/projeto-devops-back-end"
 
-echo "Iniciando aplicação..."
+echo "========================================="
+echo "APPLICATION START"
+echo "========================================="
 
-# Garante as permissoes
-chmod +x /opt/projeto-devops-back-end/projeto-devops-back-end.jar
+# Garante o proprietário correto no arquivo recém copiado pelo CodeDeploy
+chown -R ec2-user:ec2-user "$APP_DIR"
 
-# 2. Recarregar e habilitar o serviço no systemd
+echo "Recarregando configurações do systemd..."
 systemctl daemon-reload
 systemctl enable "$SERVICE_NAME"
 
-#inicia a aplicacao
+echo "Iniciando $SERVICE_NAME..."
 systemctl start "$SERVICE_NAME"
 
-
-
-echo "Aguardando aplicação inicializar..."
-
+echo "Aguardando inicialização do serviço..."
 for i in {1..30}; do
-
     if systemctl is-active --quiet "$SERVICE_NAME"; then
-        echo "Aplicação iniciada com sucesso."
+        echo "Serviço $SERVICE_NAME ativo e rodando."
         systemctl status "$SERVICE_NAME" --no-pager
         exit 0
     fi
 
-    echo "Aguardando... tentativa $i/30"
+    echo "Aguardando subida do serviço... tentativa $i/30"
     sleep 2
-
 done
 
-echo "ERRO: aplicação não iniciou corretamente."
-
+echo "ERRO: O serviço $SERVICE_NAME falhou ao iniciar no tempo limite."
 systemctl status "$SERVICE_NAME" --no-pager || true
+journalctl -u "$SERVICE_NAME" -n 50 --no-pager || true
 
 exit 1

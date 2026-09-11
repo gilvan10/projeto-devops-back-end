@@ -1,16 +1,13 @@
 version: 0.0
-
 os: linux
 
-#instrui o agente do CodeDeploy a substituir o .jar antigo pelo novo arquivo sem interromper a execução com erro de conflito.
 file_exists_behavior: OVERWRITE
 
 files:
-  - source: target/projeto-devops-back-end.jar
+  - source: projeto-devops-back-end.jar
     destination: /opt/projeto-devops-back-end
 
 hooks:
-
   ApplicationStop:
     - location: scripts/application_stop.sh
       timeout: 60
