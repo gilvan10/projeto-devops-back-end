@@ -14,10 +14,9 @@ systemctl daemon-reload
 systemctl enable "$SERVICE_NAME"
 
 #inicia a aplicacao
-#systemctl start "$SERVICE_NAME"
+systemctl start "$SERVICE_NAME"
 
-#restarta a aplicacao
-systemctl restart projeto-devops-back-end.service
+
 
 echo "Aguardando aplicação inicializar..."
 
