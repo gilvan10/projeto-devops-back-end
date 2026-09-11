@@ -52,6 +52,12 @@ phases:
 
       - cp -r deploy/scripts deploy-artifact/
 
+      - echo "===== COMMIT ====="
+      - git rev-parse HEAD
+      - echo "===== JAR ====="
+      - ls -lh target/projeto-devops-back-end.jar
+      - sha256sum target/projeto-devops-back-end.jar
+
       - echo "========================================="
       - echo "ESTRUTURA FINAL DO ARTEFATO"
       - echo "========================================="
