@@ -23,14 +23,21 @@ public class PrestadorServicoController {
         this.service = service;
     }
 
-    //para a verificação de integridade do target group aws. aqui retorna o status code 200 + a string ok
-    @GetMapping(value = "/teste")
+    //Caso não queira instalar a dependencia spring-boot-starter-actuator no pom.xml pode usar essa opção abaixo,
+    //para a verificação de integridade do target group aws. aqui retorna o status code 200 + a string ok.
+    @GetMapping(value = "/check")
     public ResponseEntity<String> check() {
-        return ResponseEntity.ok("ok pipeline teste33");
+        return ResponseEntity.ok("ok");
     }
+
+    @GetMapping(value = "/teste")
+    public ResponseEntity<String> teste() {
+        return ResponseEntity.ok("ok pipeline teste34");
+    }
+
     //ou bem simples
-    //@GetMapping("/check")
-    //public String check() {
+    //@GetMapping("/teste")
+    //public String teste() {
       //  return "ok";
     //}
 
