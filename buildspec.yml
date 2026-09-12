@@ -50,8 +50,6 @@ phases:
       # Garante permissão de execução em todos os scripts do CodeDeploy
       - chmod +x deploy-artifact/scripts/*.sh
 
-      - echo "===== COMMIT ====="
-      - git rev-parse HEAD
       - echo "===== SHA256 JAR ====="
       - sha256sum deploy-artifact/${JAR_NAME}
 
