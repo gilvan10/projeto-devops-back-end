@@ -32,7 +32,7 @@ public class PrestadorServicoController {
 
     @GetMapping(value = "/teste")
     public ResponseEntity<String> teste() {
-        return ResponseEntity.ok("ok pipeline teste35");
+        return ResponseEntity.ok("ok pipeline teste36");
     }
 
     //ou bem simples
@@ -40,6 +40,11 @@ public class PrestadorServicoController {
     //public String teste() {
       //  return "ok";
     //}
+
+    @GetMapping(value = "/pipeline")
+    public ResponseEntity<String> pipeline() {
+        return ResponseEntity.ok("pipeline");
+    }
 
 
     @GetMapping(produces =  MediaType.APPLICATION_JSON_VALUE)
