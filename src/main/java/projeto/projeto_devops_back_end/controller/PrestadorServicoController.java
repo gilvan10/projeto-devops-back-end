@@ -26,7 +26,7 @@ public class PrestadorServicoController {
     //para a verificação de integridade do target group aws. aqui retorna o status code 200 + a string ok
     @GetMapping(value = "/teste")
     public ResponseEntity<String> check() {
-        return ResponseEntity.ok("ok pipeline teste32");
+        return ResponseEntity.ok("ok pipeline teste33");
     }
     //ou bem simples
     //@GetMapping("/check")
