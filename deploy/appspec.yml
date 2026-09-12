@@ -4,7 +4,7 @@ os: linux
 file_exists_behavior: OVERWRITE
 
 files:
-  - source: projeto-devops-back-end.jar
+  - source: target/projeto-devops-back-end.jar
     destination: /opt/projeto-devops-back-end
 
 hooks:
