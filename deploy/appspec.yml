@@ -1,11 +1,11 @@
 version: 0.0
 os: linux
 
-file_exists_behavior: OVERWRITE
+file_exists_behavior: OVERWRITE   #substitui o arquivo quando existir .jar
 
 files:
-  - source: projeto-devops-back-end.jar
-    destination: /opt/projeto-devops-back-end
+  - source: projeto-devops-back-end.jar      #Caminho do JAR dentro do artefato/zip
+    destination: /opt/projeto-devops-back-end    #Pasta destino na EC2
 
 hooks:
   ApplicationStop:

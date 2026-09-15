@@ -43,7 +43,7 @@ phases:
       - mkdir -p deploy-artifact
 
       # Copia o JAR principal especificando o nome do arquivo gerado
-      - cp target/${JAR_NAME} deploy-artifact/${JAR_NAME}
+      - cp target/*.jar deploy-artifact/${JAR_NAME}
       - cp deploy/appspec.yml deploy-artifact/
       - cp -r deploy/scripts deploy-artifact/
 
