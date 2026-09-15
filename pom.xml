@@ -30,6 +30,18 @@
 	<properties>
 		<java.version>21</java.version>
 	</properties>
+	<!-- Força todos os módulos do AWS SDK para a mesma versão. Isso evita conflito de versões. -->
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>software.amazon.awssdk
+				</groupId> <artifactId>bom</artifactId>
+				<version>2.54.3</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -85,7 +97,12 @@
 		<dependency>
 			<groupId>software.amazon.awssdk</groupId>
 			<artifactId>s3</artifactId>
-			<version>2.26.7</version>
+			<!--<version>2.26.7</version>-->
+		</dependency>
+		<dependency> <!-- AWS Secrets Manager 2.54.3.-->
+			<groupId>io.awspring.cloud</groupId>
+			<artifactId>spring-cloud-aws-starter-secrets-manager</artifactId>
+			<version>4.1.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.mapstruct</groupId>

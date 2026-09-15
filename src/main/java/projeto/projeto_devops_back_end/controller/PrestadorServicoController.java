@@ -32,7 +32,7 @@ public class PrestadorServicoController {
 
     @GetMapping(value = "/teste")
     public ResponseEntity<String> teste() {
-        return ResponseEntity.ok("ok pipeline teste42");
+        return ResponseEntity.ok("ok pipeline teste43");
     }
 
     //ou bem simples
